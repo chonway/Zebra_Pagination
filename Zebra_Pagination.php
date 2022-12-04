@@ -910,11 +910,8 @@ class Zebra_Pagination {
 
             // if the current page is not yet in the URL, set it, unless we're on the first page
             // case in which we don't set it in order to avoid duplicate content
-            } else {
-
-                $url = ($this->_properties['variable_name'] !== '' ? $this->_properties['base_url'] . '/' : '') . $this->_properties['variable_name'] . $page;
-
-            }
+            } 
+                else $url = ($this->_properties['variable_name'] !== '' ? $this->_properties['base_url'] . '/' : '') . ($page == 1 && $this->_properties['avoid_duplicate_content'] ? '' : $this->_properties['variable_name'] . $page);
 
             // handle trailing slash according to preferences
             $url = rtrim($url, '/') . ($this->_properties['trailing_slash'] ? '/' : '');
